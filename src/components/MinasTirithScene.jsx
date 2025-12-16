@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, Environment } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+import Gates from "./Gates";
+import { Howl } from "howler";
 
 export default function MinasTirithScene({ next }) {
-  const model = useGLTF("/models/minas-tirith.glb");
+  useEffect(() => {
+    const gandalf = new Howl({ src: ["/audio/gandalf.mp3"] });
+    gandalf.play();
+    gandalf.on("end", () => next());
+  }, [next]);
+
+  const { scene: minas } = useGLTF("/models/minas-tirith.glb");
+
   return (
-    <div className="scene">
-      <Canvas camera={{ position: [0, 5, 15] }}>
-        <ambientLight intensity={0.5} />
-        <primitive object={model.scene} />
-        <Environment preset="sunset" />
+    <div className="minas-tirith-scene">
+      <Canvas camera={{ position: [0, 10, 30] }}>
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[10, 20, 10]} />
+        <primitive object={minas} />
+        <Gates />
+        <OrbitControls enableZoom={false} />
       </Canvas>
-      <button onClick={next}>Approach the Gates</button>
     </div>
   );
 }
