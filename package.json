@@ -13,9 +13,12 @@
     "@react-three/fiber": "^8.13.0",
     "@react-three/drei": "^9.50.0",
     "framer-motion": "^10.12.16",
-    "qrcode.react": "^2.0.1"
+    "react-qr-code": "^2.0.0"
   },
   "devDependencies": {
     "vite": "^4.6.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
