@@ -1,26 +1,29 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 
-export default function Gates({ next }) {
-  const gates = useGLTF("/models/gates.glb");
-  const leftGate = useRef(), rightGate = useRef();
-
-  useFrame(() => {
-    if (leftGate.current.rotation.y > -Math.PI/2)
-      leftGate.current.rotation.y -= 0.01;
-    if (rightGate.current.rotation.y < Math.PI/2)
-      rightGate.current.rotation.y += 0.01;
-  });
-
+export default function Gates() {
+  const left = useRef();
+  const right = useRef();
+  useEffect(() => {
+    let progress = 0;
+    const interval = setInterval(() => {
+      if (progress < 1) {
+        left.current.position.x -= 0.05;
+        right.current.position.x += 0.05;
+        progress += 0.05;
+      } else clearInterval(interval);
+    }, 50);
+  }, []);
   return (
-    <div className="scene">
-      <Canvas camera={{ position: [0, 3, 10] }}>
-        <ambientLight intensity={0.4} />
-        <primitive object={gates.scene.getObjectByName("LeftGate")} ref={leftGate}/>
-        <primitive object={gates.scene.getObjectByName("RightGate")} ref={rightGate}/>
-      </Canvas>
-      <button onClick={next}>Enter the City</button>
-    </div>
+    <>
+      <mesh ref={left} position={[-2, 0, 0]}>
+        <boxGeometry args={[1, 5, 0.5]} />
+        <meshStandardMaterial color="silver" />
+      </mesh>
+      <mesh ref={right} position={[2, 0, 0]}>
+        <boxGeometry args={[1, 5, 0.5]} />
+        <meshStandardMaterial color="silver" />
+      </mesh>
+    </>
   );
 }
