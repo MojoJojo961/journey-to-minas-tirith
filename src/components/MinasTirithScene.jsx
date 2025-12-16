@@ -1,27 +1,13 @@
-import React, { useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
-import Gates from "./Gates";
-import { Howl } from "howler";
+import React from "react";
 
 export default function MinasTirithScene({ next }) {
-  useEffect(() => {
-    const gandalf = new Howl({ src: ["/audio/gandalf.mp3"] });
-    gandalf.play();
-    gandalf.on("end", () => next());
-  }, [next]);
-
-  const { scene: minas } = useGLTF("/models/minas-tirith.glb");
-
   return (
-    <div className="minas-tirith-scene">
-      <Canvas camera={{ position: [0, 10, 30] }}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[10, 20, 10]} />
-        <primitive object={minas} />
-        <Gates />
-        <OrbitControls enableZoom={false} />
-      </Canvas>
+    <div className="minas-tirith-scene scene">
+      <img src="/images/minas-tirith.png" alt="Minas Tirith" style={{ width: "80%", maxWidth: 400 }} />
+      <h2>Long has the White City stood —</h2>
+      <p>a guardian of hope, a witness to fate.<br />
+      Today, it opens its gates… not for war, but for love.</p>
+      <button onClick={next}>Next</button>
     </div>
   );
 }
