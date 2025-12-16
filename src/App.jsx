@@ -7,7 +7,6 @@ import RSVP from "./components/RSVP";
 
 export default function App() {
   const [scene, setScene] = useState(0);
-
   const nextScene = () => setScene(scene + 1);
 
   return (
