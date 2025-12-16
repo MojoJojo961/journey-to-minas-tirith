@@ -1,0 +1,21 @@
+{
+  "name": "journey-to-minas-tirith",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@react-three/fiber": "^8.13.0",
+    "@react-three/drei": "^9.50.0",
+    "framer-motion": "^10.12.16",
+    "qrcode.react": "^1.0.1"
+  },
+  "devDependencies": {
+    "vite": "^4.6.0"
+  }
+}
