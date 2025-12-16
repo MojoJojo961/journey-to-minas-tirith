@@ -13,10 +13,12 @@
     "@react-three/fiber": "^8.13.0",
     "@react-three/drei": "^9.50.0",
     "framer-motion": "^10.12.16",
-    "react-qr-code": "^2.0.0"
+    "react-qr-code": "^2.0.0",
+    "howler": "^2.3.0"
   },
   "devDependencies": {
-    "vite": "^4.5.9"
+    "vite": "^4.5.9",
+    "@vitejs/plugin-react": "^3.2.0"
   },
   "engines": {
     "node": ">=18"
