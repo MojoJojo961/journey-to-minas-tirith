@@ -1,4 +1,6 @@
 import QRCode from "react-qr-code";
+import React from "react";
+
 
 export default function WeddingReveal({ next }) {
   return (
